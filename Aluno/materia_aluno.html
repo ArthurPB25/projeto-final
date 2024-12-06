@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matérias</title>
     <link rel="stylesheet" href="style_aluno.css">
+    <link rel="stylesheet" href="style_lista.css">
     <script src="java.js"></script>
 </head>
 <body>
@@ -103,28 +104,75 @@
         </div>
         <!--perfil-->
         <div class = "perfil">
-            
+            <div class="rodape">
+                <button class="lista" id="adicionar-lista">Adicionar uma Lista</button>
+                <a href="..\login\LoginFlex.html">Log Out<img src="..\imagens\out.svg"></a>
+            </div>
             
             <!--Cabeça do perfil-->
             <div class="header_perfil">
                 <p>Bom dia<br><span  id="nomealuno" class="negrito"></br>Aluno</span></p>
-                <script>
-                    function nomeUsuario() {
-                // Recupera o objeto 'usuario_temporario' do sessionStorage
-                const usuario = JSON.parse(sessionStorage.getItem('usuario_temporario'));
+        <dialog id="modal-lista">
+                    <h1>Lista!</h1>
+                    <div class="content">
+                        <div class="content--add--item">
+                            <input type="text" id="input-new-task" placeholder="Digite sua tarefa">
+                            <button id="btn-new-task" title="Clique aqui para adicionar uma tarefa">+</button>
+                        </div>
+                        <div class="content--body">
+                            <ul id="to-do-list"></ul>
+                        </div>
+                    </div>
+                    <button id="fechar">Fechar</button>
+        </dialog>
+        <script>
+        const localStorageKey = 'to-do-list';
+        const modal = document.getElementById("modal-lista");
+        const buttonClose = document.getElementById("fechar");
+        const buttonNewTask = document.getElementById("btn-new-task");
+        const adicionarListaButton = document.getElementById("adicionar-lista");
 
-                // Verifica se o objeto existe e se o nome está presente
-                if (usuario && usuario.nome) {
-                    // Exibe o nome no elemento com id "nomealuno"
-                    document.getElementById('nomealuno').textContent = usuario.nome;
-                } else {
-                    // Caso não tenha encontrado o nome
-                    document.getElementById('nomealuno').textContent = 'Usuário não encontrado';
-                }
+        adicionarListaButton.onclick = function() {
+            modal.showModal();
+        }
+
+        buttonClose.onclick = function() {
+            modal.close();
+        }
+
+        buttonNewTask.onclick = function() {
+            let input = document.getElementById('input-new-task');
+            if (!input.value) {
+                alert('Digite algo para inserir em sua lista');
+            } else {
+                let values = JSON.parse(localStorage.getItem(localStorageKey) || "[]");
+                values.push({ name: input.value });
+                localStorage.setItem(localStorageKey, JSON.stringify(values));
+                showValues();
+                input.value = ''; // Limpa o campo de entrada
             }
+        }
 
-        // Garante que o DOM está carregado antes de executar a função
-        window.onload = nomeUsuario;
+        function showValues() {
+            let values = JSON.parse(localStorage.getItem(localStorageKey) || "[]");
+            let list = document.getElementById('to-do-list');
+            list.innerHTML = '';
+            for (let i = 0; i < values.length; i++) {
+                list.innerHTML += `<li>${values[i]['name']}<button id='btn-ok' onclick='removeItem("${values[i]['name']}")'>✔️</button></li>`;
+            }
+        }
+
+        function removeItem(data) {
+            let values = JSON.parse(localStorage.getItem(localStorageKey) || "[]");
+            let index = values.findIndex(x => x.name == data);
+            values.splice(index, 1);
+            localStorage.setItem(localStorageKey, JSON.stringify(values));
+            showValues();
+        }
+
+        showValues();
+            
+                
                 </script>
                                 
             </div>
@@ -147,10 +195,7 @@
             </div>
 
             <!--Algumas Funções-->
-            <div class="rodape">
-                <p class="lista">Adicionar Uma Lista</p>
-                <a href="..\login\LoginFlex.html">Log Out<img src="..\imagens\out.svg"></a>
-            </div>
+            
             
         </div>
     </div>

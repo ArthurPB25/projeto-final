@@ -1,0 +1,64 @@
+
+
+        	dialog::backdrop {
+            	background-color: rgb(0 0 0 / .3);
+        }
+       		dialog {
+            		border: none;
+           	 	border-radius: .5rem;
+            		box-shadow: 0 0 1em rgb(0 0 0 / .3);
+            		width: 85%;
+            		font-family: "Arial";  
+            		background-color: #FFF6E0;
+			position: fixed; /* Fixa o modal no centro da tela */
+    			top: 50%;
+    			left: 50%;
+    			transform: translate(-50%, -50%); /* Centraliza o modal */
+        }
+        	.content--add--item {
+            		display: flex;
+            		align-items: center;
+        }
+        	#btn-new-task,
+        	#input-new-task {
+            		border: none;
+            		outline: none;
+            		padding: 1rem;
+        }
+        	#input-new-task {
+            		width: 20rem;
+            		border-radius: 1rem;
+        }
+       	 	#btn-new-task {
+            		background-color: white;
+            		border-radius: 50%;
+           	 	width: 50px;
+            		height: 50px;
+            		cursor: pointer;
+        }
+        	#btn-new-task:hover {
+            		background-color: rgb(216, 216, 216);
+        }
+        	#to-do-list {
+            		padding: 0;
+        }
+        	#to-do-list li {
+            		list-style-type: none;
+            		font-size: 1.4rem;
+            		text-transform: none;
+        }
+
+		#adicionar-lista{
+    			font-size: 1rem;
+    			padding: 0;
+    			background-color: #fefefe; 
+			color: gray;
+    			border: none;
+    			cursor: pointer;
+    			box-shadow: none;
+    			text-align: left;
+   			margin-right: 15%
+	}
+
+
+    

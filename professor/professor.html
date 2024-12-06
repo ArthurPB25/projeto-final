@@ -81,14 +81,27 @@
                 </button>
                 <a href="..\login\LoginFlex.html">Log Out<img src="..\imagens\to do.svg"></a>
             </div>
+            <dialog id="modal-lista">
+                <h1>Lista!</h1>
+                <div class="content">
+                    <div class="content--add--item">
+                        <input type="text" id="input-new-task" placeholder="Digite sua tarefa">
+                        <button id="btn-new-task" title="Clique aqui para adicionar uma tarefa">+</button>
+                    </div>
+                    <div class="content--body">
+                        <ul id="to-do-list"></ul>
+                    </div>
+                </div>
+                <button id="fechar">Fechar</button>
         </div>
     </div>
 
     <script>
-        const dialog = document.querySelector("#modalDialog");
+    const dialog = document.querySelector("#modalDialog");
     const openButton = document.querySelector("#openButton");
     const closeButton = document.querySelector("#closeButton");
     const form = dialog.querySelector("form");
+
 
     let editingIndex = null; // Variável para armazenar o índice da atividade em edição
 
@@ -200,6 +213,8 @@
     openButton.addEventListener("click", () => dialog.showModal());
     closeButton.addEventListener("click", () => dialog.close());
     window.onload = exibirAtividade;
+
     </script>
+    <script src="modal.js"></script>
 </body>
 </html>

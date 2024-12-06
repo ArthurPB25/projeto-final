@@ -23,7 +23,7 @@ function exibirAtividades() {
         const horaFormatada = formatarHora(atividade.horario); // Não usar new Date
 
         li.innerHTML = `
-                      ${atividade.descricao} 
+                      ${atividade.atividade} 
                       <span class="data">${dataFormatada}</span>
                       <button class="ver-detalhes" onclick="openModal('${atividade.atividade}', '${atividade.descricao}', '${dataFormatada}', '${horaFormatada}')">Ver Detalhes</button>
                   `;

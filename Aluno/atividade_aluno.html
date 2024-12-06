@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades</title>
+    <link rel="stylesheet" href="style_aluno.css">
+    <script src="calendario.js"></script>
+</head>
+<body>
+    <div class="estrutura">
+        <header class="header">
+            <div class="logo_escola">
+                <img src="..\imagens\Logo escola.png" alt="Logo da escola" class="logo">
+                <h1 class="titulo">Laguna School</h1>
+                <h2 class="titulo">Episteme</h2>                
+            </div>
+            <nav>
+                <!--Voltar para mexer-->
+                <a href="#" class="notificaçao"><img src="..\imagens\notificação.svg" ></a>
+            </nav>            
+        </header>
+        <!--link-->
+        <div class = "menu_calendario">
+            <a alt="sobre nos" href="https://www.notion.so/EPISTEMME-14b0777d13f180c4950cfd1484ee44a1?pvs=4">
+                <img alt="sobre nos" src="..\Imagens\corporation.svg" width="100%" >
+            </a>
+        </div>
+        <!--conteudo-->
+        <div class = "conteudo">
+            <header class="header_conteudo">
+                <div class="titulos">
+                    <a href="materia_aluno.html"><h1 class="titulo_atividades">Matérias</h1></a>
+                    <a href="atividade_aluno.html"><h1 class="titulo_materia">Atividades</h1></a>
+                </div>
+            </header>
+            <div class="licoes_ati">
+
+                <!--=================Andamento de atividades====================-->
+                <div id="processo_atividades">
+                    <div class="monitor_atividade">
+                        <div class="processo_ati"> <!--Atividade-->
+                            <h6>Atividades</br>Em processo</h6>                    
+                            <h3 class="numero"  ><img alt="begi" src="..\imagens\begi.svg"><span id="ati_processo">0</span></h3>
+                        </div>
+                        <div class="concluida_ati">  <!--concluida--> 
+                            <h6>Atividades<br>Concluídas</h6>
+                            <h3 class="numero" ><img alt="azul" src="..\imagens\azul.svg"><span id="ati_concluida">0</span></h3>
+                        </div> 
+                    </div>
+                    
+                                      
+                </div>
+                
+                <!--==============Urgencias=================-->
+                <div class="urgencia">
+                    <div class="titulo_urgencia" >
+                        <h1 >Urgências</h1>
+                    </div>   
+                    <div class="atividades_urgencia">
+                        <ul id="atividades_urgencia"></ul>
+                    </div>
+                        
+                    
+
+                    <script src="atividade_urgencia.js"></script>
+                </div>
+
+                <!--==============Calendario===============-->
+            
+            <div class="calendar">
+                <div class="month">
+                    <h1 id="monthYear"></h1>
+                </div>
+                <div class="weekdays">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sex</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="days" id="calendarDays"></div>
+            </div>
+
+
+                <!--=================================================================-->
+
+            </div>
+        </div>
+        <!--perfil-->
+        <div class = "perfil_ati">            
+            <!--Cabeça do perfil-->
+            <div class="imagem_escola">
+                <img class="escolaimg" src="..\imagens\escola.jpg" width="100%">
+                <img class="linha_ati" src="..\imagens\Linha.svg" width="87%">            
+            </div>
+            <!--Algumas Funções-->
+            <div class="rodapea">
+                <div class="lista_ati"><p >Adicionar Uma Lista</p></div>
+                <div class="sair"><a href="..\login\LoginFlex.html">Log Out<img src="..\imagens\out.svg"></a></div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

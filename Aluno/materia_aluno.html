@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matérias</title>
+    <link rel="stylesheet" href="style_aluno.css">
+    <script src="java.js"></script>
+</head>
+<body>
+    <div class="estrutura">
+        <header class="header">
+            <div class="logo_escola">
+                <img src="..\imagens\Logo escola.png" alt="Logo da escola" class="logo">
+                <h1 class="titulo">Laguna School</h1>
+                <h2 class="titulo">Episteme</h2>                
+            </div>
+            <nav>
+                <!--Voltar para mexer-->
+                <a href="#" class="notificaçao"><img src="..\imagens\notificação.svg" ></a>
+            </nav> 
+    
+        </header>
+        <!--link-->
+        <div class = "menu_calendario">
+            <a href="https://www.notion.so/EPISTEMME-14b0777d13f180c4950cfd1484ee44a1?pvs=4">
+                <img src="..\Imagens\corporation.svg" width="100%" >
+            </a>
+        </div>
+        <!--conteudo-->
+        <div class = "conteudo">
+            <header class="header_conteudo">
+
+                <div class="titulos">
+                    <a href="materia_aluno.html"><h1 class="titulo_materia">Matérias</h1></a>
+                    <a href="atividade_aluno.html"><h1 class="titulo_atividades">Atividades</h1></a>
+                </div>
+            </header>
+            <div class="licoes">
+                
+                <!--Matemática-->
+                <div class="caixa">
+                    <div class="conteudo_licao">
+
+                        <!--Título da materia-->
+                        <div class="titulo_caixa">
+                            <h1>Matemática</h1>
+                            <h6>Professor <span id="professor_mat">Nome</span> </h6>
+
+                        </div>
+
+                        <!--Atividades de matematica-->
+                        <div class="atividades_caixa">
+                            <ul id="atividades_matematica"></ul>
+                        </div>
+                    </div>
+                    <!--Background -->
+                    <div class="matematica"></div>
+                </div>
+                <!--portugues-->
+                <div class="caixa">
+                    <div class="conteudo_licao">
+
+                        <!--Título da materia-->
+                        <div class="titulo_caixa">
+                            <h1>Português</h1>
+                            <h6>Professor <span id="professor_port">Nome</span> </h6>
+
+                        </div>
+
+                        <!--Atividades de portugues-->
+                        <div class="atividades_caixa">
+                            <ul id="atividades_portugues"></ul>
+                        </div>
+                    </div>
+                    <!--Background -->
+                    <div class="portugues">
+                        
+                    </div>
+                </div>
+                <!--Biologia-->
+                <div class="caixa">
+                    <div class="conteudo_licao">
+
+                        <!--Título da materia-->
+                        <div class="titulo_caixa">
+                            <h1>Biologia</h1>
+                            <h6>Professor <span id="professor_bio">Nome</span> </h6>
+
+                        </div>
+
+                        <!--Atividades-->
+                        <div class="atividades_caixa">
+                            <ul>
+                                <ul id="atividades_biologia"></ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Background -->
+                    <div class="biologia"></div>
+                </div>           
+            </div>
+        </div>
+        <!--perfil-->
+        <div class = "perfil">
+            
+            
+            <!--Cabeça do perfil-->
+            <div class="header_perfil">
+                <p>Bom dia<br><span  id="nomealuno" class="negrito"></br>Aluno</span></p>
+                <script>
+                    function nomeUsuario() {
+                // Recupera o objeto 'usuario_temporario' do sessionStorage
+                const usuario = JSON.parse(sessionStorage.getItem('usuario_temporario'));
+
+                // Verifica se o objeto existe e se o nome está presente
+                if (usuario && usuario.nome) {
+                    // Exibe o nome no elemento com id "nomealuno"
+                    document.getElementById('nomealuno').textContent = usuario.nome;
+                } else {
+                    // Caso não tenha encontrado o nome
+                    document.getElementById('nomealuno').textContent = 'Usuário não encontrado';
+                }
+            }
+
+        // Garante que o DOM está carregado antes de executar a função
+        window.onload = nomeUsuario;
+                </script>
+                                
+            </div>
+            <!--Imagem na cabeça-->
+            <a href="#" class="img_perfil"> <img alt="https://www.freepik.com" src="..\imagens\perfil.png" width="71.21%"> </a>
+            
+            <!--quantidade de atividades-->
+            <div class="informaçaoperfil">
+               
+                <!--Em processo-->
+                <div class="processo">
+                    <h4>Informações</h4>
+                    <h6>Atividades</br>Em processo</h6>                    
+                    <h3 class="numero"  ><img alt="begi" src="..\imagens\begi.svg"><span id="ati_processo">0</span></h3>
+                    <!--concluida--> 
+                    <h6>Atividades<br>Concluídas</h6>
+                    <h3 class="numero" ><img alt="azul" src="..\imagens\azul.svg"><span id="ati_concluida">0</span></h3>     
+                    <img class="linha" src="..\imagens\Linha.svg" width="87%">            
+                </div>
+            </div>
+
+            <!--Algumas Funções-->
+            <div class="rodape">
+                <p class="lista">Adicionar Uma Lista</p>
+                <a href="..\login\LoginFlex.html">Log Out<img src="..\imagens\out.svg"></a>
+            </div>
+            
+        </div>
+    </div>
+    <script src="showActivity.js"></script>
+    <dialog id="modalDialog">
+        <h2>Detalhes da Atividade</h2>
+        <p><strong>Atividade:</strong> <span id="atividadeNome"></span></p>
+        <p><strong>Descrição:</strong> <span id="atividadeDescricao"></span></p>
+        <p><strong>Data:</strong> <span id="atividadeData"></span></p>
+        <p><strong>Hora:</strong> <span id="atividadeHora"></span></p>
+        <button class="button_form" type="button" id="closeButton">Fechar</button>
+    </dialog>
+</body>
+</html>

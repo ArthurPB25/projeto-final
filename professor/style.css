@@ -1,0 +1,538 @@
+/*Fonte*/
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #fefefe;
+    min-height: 100vh;
+}
+
+.estrutura {
+    display: grid;
+    grid-template-columns: 0.2fr 3fr 0.75fr;
+    grid-template-areas:
+        'header header header'
+        'agenda dados menu';
+    grid-template-rows: 13% auto;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/*Cabeçalho*/
+.header{
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr auto ;
+    padding: 10px;
+}
+.logo_escola{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.logo {
+    max-width: 90px;
+}
+ .logo_escola h1{
+    font-family: "serif";
+    font-size: 1.500em;
+    font-weight: 300;
+ }
+
+ .logo_escola h2{
+    font-size:1.125em;
+    color: #B4B4B5;
+    font-weight: 500;
+ }
+
+/*Cabeçalho parte sino*/
+.notificaçao{
+    grid-area: header;
+    display: grid;
+    margin-top: 35px;
+    margin-right: 35px;
+    align-items:end;
+
+}
+
+/*Calendario*/
+
+.menu_calendario{
+    grid-area: agenda;
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    margin-right: 5%;
+    width: 65px;
+    height: 125px;
+    margin-left: 15px;
+}
+
+.menu_calendario a{
+    padding: 14px;
+    min-width: 10px;
+    max-width: 25px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: auto;
+    margin-bottom: auto;
+    border-radius: 10px;
+    background: linear-gradient(5deg, #DDD9C5, #c7c1a7);
+    transition: 0.25s;
+    box-shadow:  5px 5px 15px rgba(184, 106, 106, 0.15);
+}
+
+.menu_calendario a:hover{
+    box-shadow:  5px 5px 15px rgba(247, 234, 178, 0.473);
+}
+
+/* Conteúdo */
+.conteudo {
+    display: grid;
+    grid-area: dados;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        'header header'
+        'conteudo conteudo';
+    grid-template-rows: 90px auto;
+    background-color: #F0F0F0;
+    border-radius: 20px 20px 0px 0px;
+    padding-top: 20px; /* Ajustado para diminuir a distância do topo */
+}
+
+.header_conteudo {
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 1fr; /* Uma coluna para os títulos */
+    margin: 0; /* Remover margens extras */
+    padding: 0; /* Remover padding extra */
+}
+
+.titulos {
+    display: flex; /* Muda para flexbox */
+    justify-content: space-between; /* Espaça os títulos uniformemente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10%; /* Espaçamento entre os títulos */
+    padding: 0 20%; /* Adiciona espaço nas laterais, se desejado */
+}
+.titulo_materia{
+    color: #000000;
+}
+
+.titulo_atividades{
+    color: #B4B4B5;
+}
+
+.licoes {
+    display: grid; /* Adicionando grid para as caixas */
+    grid-template-columns: 1fr 1fr; /* Duas colunas para as caixas */
+    grid-template-rows: 50% 50%;
+    gap: 25px 25px ; /* Espaçamento entre as caixas */
+    padding: 20px; /* Adicionando padding para as caixas */
+}
+
+.licoes_ati{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'processo processo'
+    'urgencia calendario'
+    ;
+    grid-template-rows: 25% auto;
+    gap: 25px 35px;
+    
+}
+
+#processo_atividades{
+    display: grid;
+    grid-area: processo;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.urgencia{
+    display: grid;
+    grid-area: urgencia;
+    background-color: #fefefe;
+    margin-bottom: 5%;
+    margin-left: 2.5%;
+    border-radius: 10px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar{
+    display: grid;
+    grid-area: calendario;
+    background-color: #fefefe;
+    margin-bottom: 5%;
+    margin-right: 2.5%;
+    border-radius: 10px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+.caixa {
+    background-color: #fefefe; /* Cor de fundo para as caixas */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Padding interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+
+a{
+    text-decoration:none;
+}
+
+
+/*Perfil*/
+.perfil{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'header_perfil header_foto'
+    'informaçao_perfil informaçao_perfil'
+    'rodape rodape'
+    ;
+    grid-template-rows: 20% 65% 15%;
+    margin: 0;
+    padding: 0;
+    margin-left:12%;
+}
+
+/*===========================Perfil atividade=====================*/
+.perfil_ati{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'imagem imagem'
+    'rodapea rodapea'
+    ;
+    grid-template-rows: 85% 15%;
+    margin-left:12%;
+}
+
+/*Imagem*/
+.imagem_escola{
+    grid-area:imagem;
+}
+
+.escolaimg{
+    width: 70%;
+    border-radius: 10px;
+}
+
+.linha_ati{
+    margin-top:25%;
+}
+
+
+/*informações do rodapé da atividade*/
+.rodapea{
+    display: grid;
+    grid-area: rodapea;
+    color: #5F6368;
+    font-weight: 450;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: 0.6s;
+}
+
+.rodapea{
+    grid-template-rows: repeat(1fr);
+}
+
+.lista_ati{
+    transition: 0.6s;
+}
+
+.sair{
+    transition: 0.6s;
+}
+
+
+.lista_ati:hover{
+    background-color: #e7e5e5;
+}
+
+.rodapea a{
+    color: #5F6368;
+}
+
+.sair:hover{
+    background-color: #e7e5e5;
+}
+
+
+.rodapea img{
+    margin-left: 5%;
+}
+
+
+
+/*=====================materia aluno====================*/
+/*Texto do cabeçario*/
+.negrito{
+    font-weight: bold;
+}
+.header_perfil{
+    display: grid;
+    grid-area: header_perfil;
+    margin-top: 15%;
+    font-size: 1.5em;
+}
+
+.img_perfil{
+    display: grid;
+    grid-area: header_foto;
+    margin-right: 10%;
+    margin-top: 3%;
+}
+
+
+/*Informação das atividades*/
+.informaçaoperfil{
+    display: grid;
+    grid-area: informaçao_perfil;
+}
+
+.processo h6{
+    color: #B4B4B5;
+    margin-top: 10%;
+    font-weight: 400;
+    font-size: 0.75em;
+}
+
+.informaçaoperfil h4{
+    color:#5F6368;
+    font-weight: 350;
+    margin-bottom: 0;
+    font-size: 0.875em;
+    
+}
+.numero{
+    font-size: 2em;
+    font-weight: 450;
+}
+
+.processo img{
+    margin-right: 3%;
+}
+
+.linha{
+    display: flex;
+    margin-top: 35%;
+    align-items: center;
+}
+
+
+
+/*Rodapé*/
+.rodape{
+    display: grid;
+    grid-area: rodape;
+    margin: 0;
+    padding: 0;
+    color: #5F6368;
+    font-weight: 450;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+.rodape{
+    grid-template-rows: repeat(1fr);
+}
+
+
+
+.rodape a{
+    color: #5F6368;
+}
+
+.rodape img{
+    margin-left: 5%;
+}
+
+
+/*=====================monitor de atividades=====================*/
+.monitor_atividade{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+    'processo concluida'
+    ;
+    justify-content: center;
+    align-items: center;
+}
+.monitor_atividade h6{
+    color: #B4B4B5;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.processo_ati{
+    grid-area:processo;
+    margin-left: 15%;
+}
+
+.processo_ati img{
+    margin-right: 3%;
+}
+
+.concluida_ati{
+    grid-area: concluida;
+}
+
+.concluida_ati img{
+    margin-right: 1%;
+}
+
+/*=====================urgencias=====================*/
+
+.urgencia {
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-template-columns:0.5fr 6fr 1fr;
+    grid-template-areas: 
+    'esquerda meio direita'
+    'esquerda meio direita'
+    'esquerda meio direita'
+    ;
+}
+
+.itens{
+    display: grid;
+    grid-area: meio;
+}
+
+.itens h1{
+    margin-top: 1.5%;
+}
+
+.itens li{
+    color: #696D72;
+}
+
+.red{
+    color: #FC9486;
+}
+
+/*===================Calendario=====================*/
+
+.month {
+    text-align: center;
+    padding:2.5%;
+    background-color: #a2bea3;
+    color: white;
+}
+.month h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.weekdays, .days {
+    display: flex;
+    flex-wrap: wrap;
+}
+.weekdays div, .days div {
+    width: 14.28%;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
+.weekdays {
+    background-color: #f3f3f3;
+}
+.days div {
+    color: #333;
+    cursor: pointer;
+}
+.days div:hover {
+    background-color: #d9e9d5;
+}
+.days .today {
+    background-color: #97aa97; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border-radius: 150%; /* Torna o elemento redondo */
+    display: inline-block; /* Garante que a largura e altura funcionem corretamente */
+    width: 2%; /* Ajuste o tamanho do círculo */
+    height: 2%; /* Ajuste o tamanho do círculo */
+    padding: 3%; /* Ajuste o padding conforme necessário */
+    line-height: 10%; /* Alinha verticalmente o texto */
+    text-align: center; /* Centraliza o texto */
+    margin: auto; /* Centraliza dentro do elemento pai */
+}
+
+
+/*===============Calendario=================*/
+.calendario_full{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*==========Caixas materia=================*/
+.caixa{
+    display: grid;
+    grid-template-columns: 4fr 0.8fr;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.conteudo_licao{
+    display: grid;
+    grid-template-areas: 
+    'header header'
+    'meio meio'
+    ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 3fr;
+}
+
+
+.titulo_caixa{
+    display: flex;
+    grid-area: header;
+    margin-left: 5%;
+    margin-top: 2.5%;
+}
+
+.atividades_caixa{
+    display: flex;
+    grid-area: meio;
+}
+
+.matematica{
+    background: linear-gradient(5deg, #f0db76, #f1a849);
+    
+}
+/*===================================================PROFESSOR==========================================================*/
+
+    
+.caixaAtividade{
+   width: 60vw;
+   height: 40%;
+   margin-left: 20%;
+   padding:2% ;
+}

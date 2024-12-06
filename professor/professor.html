@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="prof.css">
+    <link rel="stylesheet" href="style-lista.css">
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <div class="estrutura">
+        <header class="header">
+            <div class="logo_escola">
+                <img src="..\imagens\Logo escola.png" alt="Logo da escola" class="logo">
+                <h1 class="titulo">Laguna School</h1>
+                <h2 class="titulo">Episteme</h2>                
+            </div>
+            <nav>
+                <a href="#" class="notificaçao"><img src="..\imagens\notificação.svg"></a>
+            </nav>            
+        </header>
+        <div class="menu_calendario">
+            <a href="#">
+                <button id="openButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                        <path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
+                    </svg>
+                </button>
+                <dialog id="modalDialog">
+                    <h2>Adicionar atividade</h2>
+                    <form>
+                        <input class="inputf" type="text" placeholder="Digite aqui a atividade..." required>
+                        <input class="inputf" type="text" placeholder="Descrição da atividade..." required>
+                        <input class="inputf" type="date" required>
+                        <input class="inputf" type="time" required>
+                        <input class="inputf" type="text" id="cpfProfessor" placeholder="Digite seu CPF..." required>
+                        <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 10px;">
+                            <button class="button_form" type="button" id="closeButton">Cancelar</button>
+                            <button class="button_form" type="submit" id="saveButton">Salvar</button>
+                        </div>
+                    </form>
+                </dialog>
+            </a>
+        </div>
+        <div class="conteudo">
+            <header class="header_conteudo">
+                <div class="titulos">
+                    <a><h1 class="titulo_materia">Atividade</h1></a>
+                    <a><h1 class="titulo_atividades">Matéria</h1></a>
+                </div>
+            </header>
+            <div class="licoes">
+                <div class="caixa">
+                    <div class="caixa_scroll">
+                        <div class="caixaAtividade" id="atividadeContainer"></div>
+                    </div>
+                </div>
+                <div class="caixa">
+                    <div class="caixa_conteudo">
+                        <div class="turmaA"><h1>Turma A</h1></div>
+                        <div class="turmaB"><h1>Turma B</h1></div>
+                        <div class="turmaC"><h1>Turma C</h1></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="perfil">
+            <div class="header_perfil">
+                <p>Bom dia,<span class="negrito"></br>Professor</span></p>
+            </div>
+            <a href="#" class="img_perfil"><img alt="https://www.freepik.com" src="..\imagens\imagem_professor.png" width="71.21%"></a>
+            <div class="informaçaoperfil">
+                <div class="processo">
+                    <h4>Professor</h4>
+                </div>
+            </div>
+            <div class="rodape">
+                <button class="btn-rodape" id="adicionar_lista">
+                    <p>Adicionar uma lista</p>
+                </button>
+                <a href="..\login\LoginFlex.html">Log Out<img src="..\imagens\to do.svg"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dialog = document.querySelector("#modalDialog");
+    const openButton = document.querySelector("#openButton");
+    const closeButton = document.querySelector("#closeButton");
+    const form = dialog.querySelector("form");
+
+    let editingIndex = null; // Variável para armazenar o índice da atividade em edição
+
+    // Função para salvar ou atualizar a atividade no localStorage
+    function saveToLocalStorage(atividade, descricao, data, horario, cpf) {
+        const activities = JSON.parse(localStorage.getItem("activities")) || [];
+        const activityData = { atividade, descricao, data, horario, criadorCpf: cpf };
+
+        if (editingIndex !== null) {
+            activities[editingIndex] = activityData; // Atualiza a atividade no índice em edição
+        } else {
+            activities.push(activityData); // Adiciona uma nova atividade
+        }
+
+        localStorage.setItem("activities", JSON.stringify(activities));
+    }
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const atividade = form.querySelector("input[placeholder='Digite aqui a atividade...']").value;
+        const descricao = form.querySelector("input[placeholder='Descrição da atividade...']").value;
+        const data = form.querySelector("input[type='date']").value;
+        const horario = form.querySelector("input[type='time']").value;
+        const cpf = form.querySelector("#cpfProfessor").value;
+
+        if (!atividade || !descricao || !data || !horario || !cpf) {
+            alert("Por favor, preencha todos os campos!");
+            return;
+        }
+
+        saveToLocalStorage(atividade, descricao, data, horario, cpf);
+        form.reset();
+        dialog.close();
+        alert(editingIndex !== null ? "Atividade atualizada com sucesso!" : "Atividade salva com sucesso!");
+        exibirAtividade();
+        editingIndex = null; // Reseta o índice após salvar
+    });
+
+    function exibirAtividade() {
+        const savedActivities = JSON.parse(localStorage.getItem("activities")) || [];
+        const atividadeContainer = document.getElementById("atividadeContainer");
+        atividadeContainer.innerHTML = "";
+
+        if (savedActivities.length === 0) {
+            atividadeContainer.innerHTML = "<p>Não há atividades registradas.</p>";
+        } else {
+            const cpfLogado = prompt("Digite seu CPF para autenticação:");
+
+            savedActivities.forEach((atividadeInfo, index) => {
+                const atividadeElement = document.createElement("div");
+                atividadeElement.classList.add("atividade");
+
+                atividadeElement.innerHTML = `
+                    <h3>${atividadeInfo.atividade}</h3>
+                    <p><strong>Descrição:</strong> ${atividadeInfo.descricao}</p>
+                    <p><strong>Data:</strong> ${atividadeInfo.data}</p>
+                    <p><strong>Horário:</strong> ${atividadeInfo.horario}</p>
+                    <p><strong>Criador (CPF):</strong> ${atividadeInfo.criadorCpf}</p>
+                `;
+
+                if (atividadeInfo.criadorCpf === cpfLogado) {
+                    const editButton = document.createElement("button");
+                    editButton.textContent = "Editar";
+                    editButton.addEventListener("click", () => editarAtividade(index));
+                    atividadeElement.appendChild(editButton);
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Excluir";
+                    deleteButton.addEventListener("click", () => excluirAtividade(index, cpfLogado));
+                    atividadeElement.appendChild(deleteButton);
+                }
+
+                atividadeContainer.appendChild(atividadeElement);
+            });
+        }
+    }
+
+    function excluirAtividade(index, cpfLogado) {
+        const savedActivities = JSON.parse(localStorage.getItem("activities")) || [];
+        const atividade = savedActivities[index];
+
+        if (atividade.criadorCpf !== cpfLogado) {
+            alert("Você não tem permissão para excluir esta atividade!");
+            return;
+        }
+
+        savedActivities.splice(index, 1);
+        localStorage.setItem("activities", JSON.stringify(savedActivities));
+        alert("Atividade excluída com sucesso!");
+        exibirAtividade();
+    }
+
+    // Função para preencher os campos de edição
+    function editarAtividade(index) {
+        const savedActivities = JSON.parse(localStorage.getItem("activities")) || [];
+        const atividadeInfo = savedActivities[index];
+
+        // Preenche os campos com os dados da atividade selecionada
+        form.querySelector("input[placeholder='Digite aqui a atividade...']").value = atividadeInfo.atividade;
+        form.querySelector("input[placeholder='Descrição da atividade...']").value = atividadeInfo.descricao;
+        form.querySelector("input[type='date']").value = atividadeInfo.data;
+        form.querySelector("input[type='time']").value = atividadeInfo.horario;
+        form.querySelector("#cpfProfessor").value = atividadeInfo.criadorCpf;
+
+        editingIndex = index; // Guarda o índice da atividade em edição
+        dialog.showModal();
+    }
+
+    openButton.addEventListener("click", () => dialog.showModal());
+    closeButton.addEventListener("click", () => dialog.close());
+    window.onload = exibirAtividade;
+    </script>
+</body>
+</html>

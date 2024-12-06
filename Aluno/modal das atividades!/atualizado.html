@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Atividades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 id="subject-math">Atividades de Matemática</h2>
+    <h2 id="subject-bio">Atividades de Biologia</h2>
+    <h2 id="subject-portuguese">Atividades de Português</h2>
+    
+    <dialog id="activity-modal">
+        <div class="modal-banner">
+            <img id="subject-banner" alt="Imagem da Matéria">
+            <button id="close-modal" title="Fechar">X</button>
+        </div>
+        <h2 id="modal-title">Atividades</h2>
+        <ul id="activity-list"></ul>
+    </dialog>
+
+    <script>
+        const modal = document.getElementById("activity-modal");
+        const closeModal = document.getElementById("close-modal");
+        const activityList = document.getElementById("activity-list");
+        const subjectBanner = document.getElementById("subject-banner");
+        const modalTitle = document.getElementById("modal-title");
+
+        const activities = {
+            'Matemática': {
+                tasks: [
+                    { name: "Estudar álgebra", done: false },
+                    { name: "Revisar geometria", done: false }
+                ],
+                image: "matematica.png"
+            },
+            'Biologia': {
+                tasks: [
+                    { name: "Ler sobre Idade Média", done: false },
+                    { name: "Fazer resumo do Renascimento", done: false }
+                ],
+                image: "historia.png"
+            },
+            'Português': {
+                tasks: [
+                    { name: "Estudar mapas", done: false },
+                    { name: "Revisar conceitos de clima", done: false }
+                ],
+                image: "geography-banner.jpg"
+            },
+        }
+            
+
+        function showActivities(subject) {
+            activityList.innerHTML = "";
+            modalTitle.innerText = `Atividades de ${subject}`;
+            subjectBanner.src = activities[subject].image;
+
+            activities[subject].tasks.forEach((activity, index) => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    <span>${activity.name}</span>
+                    <button onclick="markDone('${subject}', ${index})">Feito</button>
+                `;
+                activityList.appendChild(li);
+            });
+            modal.showModal();
+        }
+
+        function markDone(subject, index) {
+            activities[subject].tasks[index].done = true;
+            showActivities(subject); // Atualiza a lista para refletir o status "feito"
+        }
+
+        // Eventos para abrir o modal para cada matéria
+        document.getElementById("subject-math").onclick = () => showActivities('Matemática');
+        document.getElementById("subject-bio").onclick = () => showActivities('Biologia');
+        document.getElementById("subject-portuguese").onclick = () => showActivities('Português');
+        closeModal.onclick = () => modal.close();
+    </script>
+</body>
+</html>

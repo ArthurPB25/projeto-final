@@ -1,0 +1,388 @@
+/*Fonte*/
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+   
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #fefefe;
+    min-height: 100vh;
+}
+
+
+.estrutura {
+    display: grid;
+    grid-template-columns: 0.2fr 3fr 0.75fr;
+    grid-template-areas:
+        'header header header'
+        'agenda dados menu';
+    grid-template-rows: 125px auto;
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/*Cabeçalho*/
+.header{
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr auto ;
+    padding: 10px;
+}
+.logo_escola{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.logo {
+    max-width: 90px;
+}
+ .logo_escola h1{
+    font-family: "serif";
+    font-size: 1.500em;
+    font-weight: 300;
+ }
+
+
+ .logo_escola h2{
+    font-size:1.125em;
+    color: #B4B4B5;
+    font-weight: 500;
+ }
+
+
+/*Cabeçalho parte sino*/
+.notificaçao{
+    grid-area: header;
+    display: grid;
+    margin-top: 35px;
+    margin-right: 35px;
+    align-items:end;
+
+
+}
+
+
+/*adicionar*/
+
+
+.menu_calendario{
+    grid-area: agenda;
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    margin-right: 5%;
+    width: 65px;
+    height: 125px;
+    margin-left: 15px;
+}
+
+
+.menu_calendario a{
+    padding: 14px;
+    min-width: 10px;
+    max-width: 25px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: auto;
+    margin-bottom: auto;
+    border-radius: 10px;
+    background: linear-gradient(5deg, #DDD9C5, #c7c1a7);
+    transition: 0.25s;
+    box-shadow:  0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.menu_calendario img{
+    margin-right: 5%;
+}
+
+
+.menu_calendario a:hover{
+    box-shadow:  0px 4px 8px rgba(211, 210, 175, 0.473);
+}
+
+
+/* Conteúdo */
+.conteudo {
+    display: grid;
+    grid-area: dados;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'header header'
+        'conteudo conteudo';
+    grid-template-rows: 90px auto;
+    background-color: #F0F0F0;
+    border-radius: 20px 20px 0px 0px;
+    padding-top: 20px; /* Ajustado para diminuir a distância do topo */
+    padding-bottom: 0;
+}
+
+
+.header_conteudo {
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 1fr; /* Uma coluna para os títulos */
+    margin: 0; /* Remover margens extras */
+    padding: 0; /* Remover padding extra */
+}
+
+
+.titulos {
+    display: flex; /* Muda para flexbox */
+    justify-content: space-between; /* Espaça os títulos uniformemente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10%; /* Espaçamento entre os títulos */
+    padding: 0 20%; /* Adiciona espaço nas laterais, se desejado */
+}
+.titulo_materia{
+    color: #000000;
+}
+
+
+.titulo_atividades{
+    color: #000000;
+}
+
+
+.licoes {
+    display: grid; /* Adicionando grid para as caixas */
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas para as caixas */
+    gap: 35px 25px; /* Espaçamento entre as caixas */
+    padding: 20px; /* Adicionando padding para as caixas */
+    padding-bottom: 0;
+}
+
+
+
+
+
+
+a{
+    text-decoration:none;
+}
+
+
+
+
+/*Perfil*/
+.perfil{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'header_perfil header_foto'
+    'informaçao_perfil informaçao_perfil'
+    'rodape rodape'
+    ;
+    grid-template-rows: 14.78% 40.83% 39.48%;
+    margin: 0;
+    padding: 0;
+    margin-left:12%;
+}
+/*Texto do cabeçario*/
+.negrito{
+    font-weight: bold;
+}
+.header_perfil{
+    display: grid;
+    grid-area: header_perfil;
+    margin-top: 15%;
+
+
+    font-size: 1.8em;
+}
+
+
+.img_perfil{
+    display: grid;
+    grid-area: header_foto;
+    margin-right: 10%;
+    margin-top: 3%;
+}
+
+
+
+
+/*Informação das atividades*/
+.informaçaoperfil{
+    display: grid;
+    grid-area: informaçao_perfil;
+}
+
+
+.processo h6{
+    color: #B4B4B5;
+    margin-top: 10%;
+    font-weight: 400;
+    font-size: 0.75em;
+}
+
+
+.informaçaoperfil h4{
+    color:#5F6368;
+    font-weight: 350;
+    margin-bottom: 0;
+    font-size: 0.875em;
+   
+}
+.numero{
+    font-size: 2em;
+    font-weight: 450;
+}
+
+
+.processo img{
+    margin-right: 3%;
+}
+
+
+.linha{
+    display: flex;
+    margin-top: 35%;
+    align-items: center;
+}
+
+
+/*Rodapé*/
+.rodape{
+    display: grid;
+    grid-area: rodape;
+    margin: 0;
+    padding: 0;
+    color: #5F6368;
+    font-weight: 450;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+.rodape a{
+    color: #5F6368;
+}
+
+.rodape img{
+    margin-left: 5%;
+}
+
+
+/*=============================TURMAS=================================*/
+.caixa {
+    background-color: #fefefe; /* Cor de fundo para as caixas */
+    border-radius: 10px 10px 0 0; /* Bordas arredondadas */
+    padding: 0px; /* Padding interno */
+    gap: 5%;
+    height: 100%;
+   
+
+
+}
+/*======================================================*/
+.caixa_conteudo{
+    display: grid;/*declarando o tipo de display se é flex ou grid*/
+    grid-template-areas: /*sao as areas dentro do conteiner*/
+    'turmaA'
+    'turmaB'
+    'turmaC'
+    ;
+    grid-template-rows: 33.33% 33.33% 33.33%  ; /*espaçamento entre as linhas*/
+    padding: 3.5%;
+    gap: 3%;
+    height: 100%;
+}
+.turmaA{
+    grid-area: turmaA;
+    background-color: #ECECEC;
+    border-radius: 10px;
+    transition: 0.75s;
+   
+}
+.turmaB{
+    grid-area: turmaB;
+    background-color: #ECECEC;
+    border-radius: 10px;
+    transition: 0.75s;
+}
+.turmaC{
+    grid-area: turmaC;
+    background-color: #ECECEC;
+    border-radius: 10px;
+    transition: 0.75s;
+}
+
+
+.turmaA:hover{
+    background-color: #D7D7D7;
+}
+.turmaB:hover{
+    background-color: #D7D7D7;
+}
+.turmaC:hover{
+    background-color: #D7D7D7;
+}
+
+.btn-rodape{
+    text-decoration: none; /* Sem sublinhado */
+    cursor: pointer; /* Cursor de link */
+    padding: 0; /* Remove o preenchimento padrão */
+    background: none;
+    border: none;
+    margin-top: 68%;
+    display: flex;
+    color: #5F6368;
+    font-weight: 450;
+    font-size: 1.2em;
+    text-decoration: none;
+
+}
+
+.rodape a{
+    color: #5F6368;
+    font-weight: 450;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+.btn-rodape{
+    transition: 0.6s;
+}
+
+.rodape a{
+    transition: 0.6s;
+}
+
+
+.btn-rodape:hover{
+    background-color: #e7e5e5;
+}
+
+
+.rodape a:hover{
+    background-color: #e7e5e5;
+}
+.caixaAtividade{
+    width: 90%;
+    height: 80%;
+    overflow-y:auto
+    
+   
+ }
+ #atividadeContainer{
+    margin-left: 1.5%;
+    
+ }
